@@ -1,6 +1,6 @@
 # DisableExplicitGC
 
-# 依赖包滥用System.gc()导致的Full GC
+# 通用的依赖jar包滥用System.gc()导致的Full GC
 
 ### 运行应用
 启动参数增加 `-XX:+PrintGCDetails` 启动应用，GC日志：
@@ -12,7 +12,7 @@
 ![fullGC](src/main/resources/fullgc.png)
 可以看出应用发生了 `Full GC(System.gc())`
 ### 
-经过排查(在项目的依赖包中全局搜索`System.gc()`),jxl.jar中大量使用了System.gc()
+经过排查(在项目的依赖包中全局搜索`System.gc()`),jxl.jar(导出excel表格的通用jar包)中大量使用了System.gc()
 ![fullGC](src/main/resources/systemgc.png)
 
 ### 解决方式
